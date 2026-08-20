@@ -29,6 +29,7 @@ export default function Home() {
     [activeFilter, content.properties],
   );
   const phoneHref = `tel:${content.phone.replace(/[^0-9+]/g, "")}`;
+  const isDefaultHeroTitle = content.heroTitle === defaultSiteContent.heroTitle;
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -53,17 +54,17 @@ export default function Home() {
           <div className="hero-rail"><span>01</span><span>FIELD NOTE</span><i /></div>
           <div className="hero-copy">
             <p className="eyebrow">{content.heroEyebrow}</p>
-            <h1>{content.heroTitle.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>
+            <h1 className={isDefaultHeroTitle ? "hero-calligraphy" : undefined}>{isDefaultHeroTitle ? <img src="/manus-storage/cheongyang-hero-calligraphy-clean_3b805a66.png" alt={content.heroTitle} /> : content.heroTitle.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>
             <p className="hero-description">{content.heroDescription}</p>
             <div className="hero-actions"><a href="#properties" className="primary-button">대표 매물 살펴보기 <ArrowDownRight size={18} /></a><a href="#inquiry" className="text-link">조건부터 남기기 <ArrowRight size={16} /></a></div>
           </div>
-          <aside className="hero-note"><span>LOCAL DESK</span><p>청양의 생활권을 알고, 현장에서 다시 확인하는 중개.</p><div><Trees size={17} /><small>토지 · 전원주택 · 농지</small></div></aside>
+          <aside className="hero-note"><span>LOCAL DESK</span><p>청양읍 시내부터 산자락까지, 생활권을 알고 현장에서 다시 확인하는 중개.</p><div><Trees size={17} /><small>청양읍 · 토지 · 전원주택 · 농지</small></div></aside>
         </section>
 
         <section className="area-section" aria-label="청양 지역 안내">
           <div className="section-side-title"><span>AREA NOTE</span><strong>청양을<br />읽는 법</strong></div>
-          <div className="area-intro"><span className="dot-number">02</span><p>원하는 매물의 조건은 평수만으로 정해지지 않습니다. 청양에서는 도로, 경사, 생활 동선과 계절의 표정을 함께 살핍니다.</p></div>
-          <div className="area-pills"><button>대치면 <ChevronRight size={15} /></button><button>정산면 <ChevronRight size={15} /></button><button>운곡면 <ChevronRight size={15} /></button><button>남양면 <ChevronRight size={15} /></button></div>
+          <div className="area-intro"><span className="dot-number">02</span><p>원하는 매물의 조건은 평수만으로 정해지지 않습니다. 청양읍 시내 생활권부터 산자락의 토지까지, 도로·경사·생활 동선과 계절의 표정을 함께 살핍니다.</p></div>
+          <div className="area-pills"><button>청양읍 · 시내 <ChevronRight size={15} /></button><button>대치면 <ChevronRight size={15} /></button><button>정산면 <ChevronRight size={15} /></button><button>운곡면 <ChevronRight size={15} /></button><button>남양면 <ChevronRight size={15} /></button></div>
         </section>
 
         <section id="properties" className="property-section">
