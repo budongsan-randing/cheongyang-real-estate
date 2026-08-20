@@ -1,11 +1,13 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
+import { lazy, Suspense } from "react";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
-import Manage from "./pages/Manage";
+
+const Manage = lazy(() => import("./pages/Manage"));
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -34,7 +36,9 @@ function App() {
       >
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <Suspense fallback={<div className="route-loader" role="status">화면을 불러오는 중입니다.</div>}>
+            <Router />
+          </Suspense>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

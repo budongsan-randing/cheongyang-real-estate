@@ -52,11 +52,11 @@ export default function Home() {
 
       <main id="top">
         <section className="hero-section">
-          <div className="hero-image" aria-hidden="true"><img src={content.heroImageUrl || "/manus-storage/cheongyang-hero-ridge_a94ba82e.jpg"} alt="" /></div>
+          <div className="hero-image" aria-hidden="true"><img src={content.heroImageUrl || "/manus-storage/cheongyang-hero-ridge_a94ba82e.jpg"} alt="" fetchPriority="high" decoding="async" /></div>
           <div className="hero-rail"><span>01</span><span>FIELD NOTE</span><i /></div>
           <div className="hero-copy">
             <p className="eyebrow">{content.heroEyebrow}</p>
-            <h1 className={isDefaultHeroTitle ? "hero-calligraphy" : undefined}>{isDefaultHeroTitle ? <img src="/manus-storage/cheongyang-hero-calligraphy-clean_3b805a66.png" alt={content.heroTitle} /> : content.heroTitle.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>
+            <h1 className={isDefaultHeroTitle ? "hero-calligraphy" : undefined}>{isDefaultHeroTitle ? <img src="/manus-storage/cheongyang-hero-calligraphy-clean_3b805a66.png" alt={content.heroTitle} decoding="async" /> : content.heroTitle.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>
             <p className="hero-description">{content.heroDescription}</p>
             <div className="hero-actions"><a href="#properties" className="primary-button">대표 매물 살펴보기 <ArrowDownRight size={18} /></a><a href="#inquiry" className="text-link">조건부터 남기기 <ArrowRight size={16} /></a></div>
           </div>
@@ -75,7 +75,7 @@ export default function Home() {
           <div className="property-grid">
             {visibleProperties.map((property, index) => (
               <article className={`property-card property-${property.tint} ${!property.imageUrl ? "is-data-card" : ""}`} key={`${property.title}-${index}`}>
-                {property.imageUrl ? <div className="property-image"><img src={property.imageUrl} alt={`${property.title} 매물 사진`} /><span>FIELD LISTING</span></div> : <div className="data-card-art"><Sprout size={52} strokeWidth={1} /><span>FIELD<br />CHECK</span></div>}
+                {property.imageUrl ? <div className="property-image"><img src={property.imageUrl} alt={`${property.title} 매물 사진`} loading="lazy" decoding="async" /><span>FIELD LISTING</span></div> : <div className="data-card-art"><Sprout size={52} strokeWidth={1} /><span>FIELD<br />CHECK</span></div>}
                 <div className="property-body"><div className="property-meta"><span>{property.kind}</span><span><MapPin size={13} /> {property.location}</span></div><h3>{property.title}</h3><p>{property.detail}</p><div className="property-field-note"><span>OBS. 0{index + 1}</span><span>방향 확인</span><span>진입 검토</span></div><div className="property-spec"><span>{property.size}</span><strong>{property.price}</strong></div><a href="#inquiry" className="property-link">이 매물 조건 문의 <ArrowRight size={15} /></a></div>
                 <b className="property-index">0{index + 1}</b>
               </article>
