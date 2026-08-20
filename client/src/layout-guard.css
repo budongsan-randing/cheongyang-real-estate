@@ -1,0 +1,26 @@
+/* 화면 폭 변화에도 텍스트·행동 버튼·안내 카드가 서로 침범하지 않도록 하는 반응형 안전 여백 */
+.hero-note small { display: block; line-height: 1.55; overflow-wrap: anywhere; }
+.area-pills { align-content: flex-start; }
+.area-pills button { white-space: nowrap; }
+
+@media (min-width: 701px) and (max-width: 960px) {
+  .hero-section { grid-template-columns: 64px minmax(0, 1fr) 230px; }
+  .hero-copy { padding-right: 36px; padding-bottom: 66px; }
+  .hero-copy h1.hero-calligraphy { width: min(100%, 470px); margin-bottom: 15px; }
+  .hero-note { min-height: 0; padding: 26px 24px 28px; }
+  .hero-note p { font-size: 20px; line-height: 1.5; }
+  .hero-note small { font-size: 10px; }
+  .area-section { row-gap: 26px; }
+  .area-pills { gap: 8px 7px; }
+}
+
+@media (max-width: 700px) {
+  .hero-section { min-height: 700px; }
+  .hero-copy { padding-top: 92px; }
+  .hero-actions { gap: 12px 18px; }
+  .hero-note small { font-size: 10px; }
+}
+
+@media (max-width: 360px) {
+  .hero-section { min-height: 760px; }
+}
