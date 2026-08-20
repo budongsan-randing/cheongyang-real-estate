@@ -37,10 +37,10 @@ export const defaultSiteContent: ManagedSiteContent = {
   heroEyebrow: "CHEONGYANG · FIELD NOTE 01",
   heroTitle: "청양에서,\n오래 머물 땅을 찾습니다.",
   heroDescription: "토지부터 전원주택까지. 생활의 조건을 먼저 듣고, 현장에서 답을 확인합니다.",
-  heroImageUrl: "/manus-storage/cheongyang-hero-ridge_a94ba82e.jpg",
+  heroImageUrl: "/manus-storage/cheongyang-hero-ridge_874db285.webp",
   properties: [
-    { kind: "토지", title: "칠갑산 자락의 완만한 남향 토지", location: "청양군 대치면", detail: "답사·건축 가능 여부를 함께 확인하는 필드 노트형 매물입니다.", size: "약 1,420㎡", price: "가격 상담", imageUrl: "/manus-storage/cheongyang-farmland_67451da2.jpg", tint: "cream" },
-    { kind: "전원주택", title: "숲과 마을 사이, 작은 정원을 둔 집", location: "청양군 정산면", detail: "주말 체류와 귀촌 생활을 함께 검토할 수 있는 주거 제안입니다.", size: "대지 약 460㎡", price: "가격 상담", imageUrl: "/manus-storage/cheongyang-country-home_30661454.jpg", tint: "pine" },
+    { kind: "토지", title: "칠갑산 자락의 완만한 남향 토지", location: "청양군 대치면", detail: "답사·건축 가능 여부를 함께 확인하는 필드 노트형 매물입니다.", size: "약 1,420㎡", price: "가격 상담", imageUrl: "/manus-storage/cheongyang-farmland_b2d647ce.webp", tint: "cream" },
+    { kind: "전원주택", title: "숲과 마을 사이, 작은 정원을 둔 집", location: "청양군 정산면", detail: "주말 체류와 귀촌 생활을 함께 검토할 수 있는 주거 제안입니다.", size: "대지 약 460㎡", price: "가격 상담", imageUrl: "/manus-storage/cheongyang-country-home_0ae2564f.webp", tint: "pine" },
     { kind: "농지", title: "생활권 가까이, 관리가 편한 농지", location: "청양군 운곡면", detail: "진입·경사·용도 등 현장 확인이 중요한 조건을 우선 살핍니다.", size: "약 2,060㎡", price: "가격 상담", imageUrl: null, tint: "clay" },
   ],
   journal: [

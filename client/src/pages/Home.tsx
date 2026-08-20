@@ -2,7 +2,7 @@
  * Style reminder — 산자락의 여백: 청양의 장소성을 먼저 보여 주는 컨템퍼러리 코리안 에디토리얼.
  * 미색 바탕·먹빛 본문·솔잎녹색 행동 강조·비대칭 필드 노트 구성을 유지한다.
  */
-import { useMemo, useState } from "react";
+import { lazy, Suspense, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { ArrowDownRight, ArrowRight, CheckCircle2, ChevronRight, FilePenLine, MapPin, MessageCircle, Phone, Sprout, Trees } from "lucide-react";
 import { toast } from "sonner";
@@ -13,15 +13,17 @@ import "@/layout-guard.css";
 
 const filters: Array<"전체" | PropertyKind> = ["전체", "토지", "전원주택", "농지"];
 const cheongyangAreas = ["청양읍 · 시내", "운곡면", "대치면", "정산면", "목면", "청남면", "장평면", "남양면", "비봉면", "화성면"];
+const InquirySuccessModal = lazy(() => import("./InquirySuccessModal"));
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState<"전체" | PropertyKind>("전체");
   const [form, setForm] = useState({ name: "", contact: "", interest: "토지", message: "" });
+  const [isInquirySuccessOpen, setIsInquirySuccessOpen] = useState(false);
   const contentQuery = trpc.content.get.useQuery();
   const submitInquiry = trpc.inquiry.submit.useMutation({
     onSuccess: () => {
-      toast.success("문의가 접수되었습니다.", { description: "확인 후 입력하신 연락처로 안내드리겠습니다." });
       setForm({ name: "", contact: "", interest: "토지", message: "" });
+      setIsInquirySuccessOpen(true);
     },
     onError: () => toast.error("문의 접수에 실패했습니다. 잠시 후 다시 시도해 주세요."),
   });
@@ -108,6 +110,7 @@ export default function Home() {
       </main>
       <footer className="site-footer"><div className="footer-brand"><img src="/manus-storage/cheongyang-logo-mark_0d5e9394.png" alt="" /><span>{content.officeName}<small>CHEONGYANG FIELD ESTATE</small></span></div><p>사업자 정보와 소재지, 실제 대표번호는 개설 전 필수로 입력해 주세요.</p><div><Link href="/manage">유지보수</Link><a href="#top">맨 위로 <ArrowDownRight size={15} /></a></div></footer>
       <div className="mobile-action-bar"><a href={phoneHref}><Phone size={16} /> 전화 상담</a><a href="#inquiry"><MessageCircle size={16} /> 조건 남기기</a></div>
+      {isInquirySuccessOpen && <Suspense fallback={null}><InquirySuccessModal onClose={() => setIsInquirySuccessOpen(false)} /></Suspense>}
     </div>
   );
 }
